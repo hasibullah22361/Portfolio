@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --background: 2 6 23;
+  --surface: 15 23 42;
+  --surface-elevated: 15 23 42;
+  --border: 51 65 85;
+  --text: 248 250 252;
+  --muted: 148 163 184;
+  --accent: 59 130 246;
+  --accent-strong: 96 165 250;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(59, 130, 246, 0.14), transparent 34%),
+    linear-gradient(180deg, rgb(var(--background)) 0%, rgb(15 23 42) 100%);
+  color: rgb(var(--text));
+  font-family: var(--font-inter), Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.28);
+  color: rgb(var(--text));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight text-white;
+  }
+
+  p,
+  li {
+    @apply text-slate-300;
+  }
+}
+
+@layer components {
+  .portfolio-shell {
+    @apply mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10;
+  }
+
+  .portfolio-surface {
+    @apply border border-slate-800/80 bg-slate-900/60 shadow-[0_24px_80px_-24px_rgba(15,23,42,0.9)];
+  }
+
+  .portfolio-surface-soft {
+    @apply border border-slate-800/60 bg-slate-900/40;
+  }
+
+  .portfolio-focus {
+    @apply outline-none ring-0 ring-offset-0 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950;
+  }
+
+  /* Global Button Animation & Interaction System */
+  .portfolio-btn {
+    @apply relative inline-flex items-center justify-center font-medium
+           transition-all duration-300 ease-out
+           hover:-translate-y-0.5 hover:scale-[1.025]
+           active:translate-y-0 active:scale-[0.975]
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950
+           motion-reduce:transition-none motion-reduce:hover:transform-none motion-reduce:active:transform-none
+           [&_svg]:transition-transform [&_svg]:duration-300 [&_svg]:ease-out hover:[&_svg]:translate-x-0.5 motion-reduce:hover:[&_svg]:transform-none;
+  }
+
+  .portfolio-btn-primary {
+    @apply bg-accent text-white shadow-glow
+           hover:bg-accent-strong hover:shadow-[0_12px_35px_-5px_rgba(59,130,246,0.5)];
+  }
+
+  .portfolio-btn-secondary {
+    @apply border border-slate-700 bg-slate-900/60 text-slate-200
+           hover:border-slate-500 hover:bg-slate-800/90 hover:text-white hover:shadow-[0_8px_25px_-5px_rgba(15,23,42,0.8)];
+  }
+
+  .portfolio-btn-cyan {
+    @apply bg-cyan-600 text-white shadow-lg shadow-cyan-950/50
+           hover:bg-cyan-500 hover:shadow-cyan-900/60 hover:shadow-[0_10px_30px_-5px_rgba(6,182,212,0.4)];
+  }
+
+  .portfolio-btn-ghost {
+    @apply text-slate-300 hover:bg-slate-800/70 hover:text-white;
+  }
+
+  /* "Ullah" magic gradient */
+  .magic-name {
+    background: linear-gradient(135deg, #a855f7 0%, #ec4899 40%, #f97316 80%, #facc15 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 4s ease-in-out infinite alternate;
+  }
+
+  /* Section h2 title gradient */
+  .section-title {
+    background: linear-gradient(135deg, #818cf8 0%, #a78bfa 40%, #38bdf8 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 6s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
