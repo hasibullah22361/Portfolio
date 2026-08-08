@@ -8,7 +8,11 @@ import { profile } from '@/data/profile';
 export const metadata: Metadata = {
   title: `${profile.name} | ${profile.headline}`,
   description: profile.shortBio,
-  metadataBase: new URL('https://hasibullah.dev'),
+  icons: {
+    icon: '/images/favicon.png',
+    shortcut: '/images/favicon.png',
+    apple: '/images/favicon.png',
+  },
 };
 
 export default function RootLayout({
