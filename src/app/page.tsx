@@ -1,25 +1,35 @@
-import { profile } from '@/data/profile';
+import { HeroSection } from '@/components/sections/hero';
+import { StatsSection } from '@/components/sections/stats-section';
+import { WhatIBuildSection } from '@/components/sections/what-i-build';
+import { SkillsSection } from '@/components/sections/skills';
+import { SkillsChartSection } from '@/components/sections/skills-chart';
+import { FeaturedProjectsSection } from '@/components/sections/featured-projects';
+import { TechDistributionSection } from '@/components/sections/tech-distribution';
+import { GitHubActivitySection } from '@/components/sections/github-activity';
+import { CertificationsSection } from '@/components/certifications/certifications-section';
+import { ContactCTASection } from '@/components/sections/contact-cta';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { Surface } from '@/components/ui/surface';
-import { HeroSection } from '@/components/sections/hero';
-import { AboutSection } from '@/components/sections/about';
-import { SkillsSection } from '@/components/sections/skills';
-import { FeaturedProjectsSection } from '@/components/sections/featured-projects';
-import { ExperienceTimeline } from '@/components/timeline/experience-timeline';
-import { EducationTimeline } from '@/components/timeline/education-timeline';
-import { ResearchSection } from '@/components/research/research-section';
-import { CertificationsSection } from '@/components/certifications/certifications-section';
 
 export default function HomePage() {
   return (
     <main className="min-h-screen px-4 py-12 sm:px-6 sm:py-16 lg:px-10">
       <div className="portfolio-shell flex flex-col gap-8">
+
+        {/* ── 1. Hero ── */}
         <HeroSection />
 
+        {/* ── 2. Animated Statistics ── */}
         <div className="animate-on-scroll">
-          <AboutSection />
+          <StatsSection />
         </div>
 
+        {/* ── 3. What I Build ── */}
+        <div className="animate-on-scroll">
+          <WhatIBuildSection />
+        </div>
+
+        {/* ── 4. Skills by Category ── */}
         <div className="animate-on-scroll">
           <Surface>
             <SectionHeading
@@ -34,6 +44,12 @@ export default function HomePage() {
           <SkillsSection />
         </div>
 
+        {/* ── 5. Skills Focus Chart ── */}
+        <div className="animate-on-scroll">
+          <SkillsChartSection />
+        </div>
+
+        {/* ── 6. Featured Projects ── */}
         <div className="animate-on-scroll">
           <Surface>
             <SectionHeading
@@ -48,48 +64,17 @@ export default function HomePage() {
           <FeaturedProjectsSection />
         </div>
 
+        {/* ── 7. Technology Distribution ── */}
         <div className="animate-on-scroll">
-          <Surface>
-            <SectionHeading
-              eyebrow="Experience"
-              title="Current professional timeline"
-              description="Professional experience, internship history, and engineering roles."
-            />
-          </Surface>
+          <TechDistributionSection />
         </div>
 
+        {/* ── 8. GitHub Activity ── */}
         <div className="animate-on-scroll">
-          <ExperienceTimeline />
+          <GitHubActivitySection />
         </div>
 
-        <div className="animate-on-scroll">
-          <Surface>
-            <SectionHeading
-              eyebrow="Education"
-              title="Academic progression"
-              description="Academic foundation and degree studies in Computer Science."
-            />
-          </Surface>
-        </div>
-
-        <div className="animate-on-scroll">
-          <EducationTimeline />
-        </div>
-
-        <div className="animate-on-scroll">
-          <Surface>
-            <SectionHeading
-              eyebrow="Research"
-              title="Current research interests"
-              description="Primary research directions in Artificial Intelligence, Machine Learning, and Computer Vision."
-            />
-          </Surface>
-        </div>
-
-        <div className="animate-on-scroll">
-          <ResearchSection />
-        </div>
-
+        {/* ── 9. Certifications & Achievements ── */}
         <div className="animate-on-scroll">
           <Surface>
             <SectionHeading
@@ -104,38 +89,11 @@ export default function HomePage() {
           <CertificationsSection />
         </div>
 
-        <section id="primary-areas" className="animate-on-scroll grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-          <Surface className="portfolio-surface-soft">
-            <SectionHeading
-              eyebrow="Primary Areas"
-              title="Core Technical Focus Areas"
-              description="Primary technical domains driving software development, data science, and research projects."
-            />
-            <ul className="mt-6 flex flex-wrap gap-3">
-              {profile.primaryAreas.map((area) => (
-                <li
-                  key={area}
-                  className="rounded-full border px-3 py-1 text-sm"
-                  style={{
-                    borderColor: 'var(--surface-border)',
-                    background: 'var(--surface-bg)',
-                    color: 'var(--body-text-color)',
-                  }}
-                >
-                  {area}
-                </li>
-              ))}
-            </ul>
-          </Surface>
+        {/* ── 10. Contact CTA ── */}
+        <div className="animate-on-scroll">
+          <ContactCTASection />
+        </div>
 
-          <Surface className="portfolio-surface-soft">
-            <SectionHeading
-              eyebrow="Approach"
-              title="Engineering Philosophy"
-              description="Combining machine learning, computer vision, and modern software design to build reliable, practical applications."
-            />
-          </Surface>
-        </section>
       </div>
     </main>
   );

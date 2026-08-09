@@ -14,12 +14,12 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const siteUrl = 'https://hasibullah.netlify.app';
+const siteUrl = 'https://hasibullah361.netlify.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${profile.name} — AI & Data Science Developer Portfolio`,
+    default: `${profile.name} | AI & Data Science Developer`,
     template: `%s | ${profile.name}`,
   },
   description: `${profile.name} is a Computer Science graduate specializing in Artificial Intelligence, Machine Learning, Computer Vision, and Data Science. Explore projects, skills, and research.`,

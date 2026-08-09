@@ -2,7 +2,8 @@ export type SkillCategory =
   | 'AI & Machine Learning'
   | 'Data Science'
   | 'Computer Vision'
-  | 'Development';
+  | 'Development'
+  | 'Tools';
 
 export type Skill = {
   name: string;

@@ -8,6 +8,7 @@ const skillCategories: SkillCategory[] = [
   'Data Science',
   'Computer Vision',
   'Development',
+  'Tools',
 ];
 
 export function SkillsSection() {

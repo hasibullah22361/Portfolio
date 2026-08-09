@@ -9,6 +9,7 @@ import {
   Layers3,
   LocateFixed,
   Network,
+  Package,
   ScanEye,
   ScanSearch,
   Sigma,
@@ -35,6 +36,8 @@ const iconMap = {
   Layers3,
   Smartphone,
   Flame,
+  Package,
+  Container: Package,
 } as const;
 
 type SkillCardProps = {

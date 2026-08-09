@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, Sparkles, Sun, Moon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState, useCallback } from 'react';
@@ -79,9 +80,16 @@ export function Navbar() {
             href="/"
             className="portfolio-focus group inline-flex items-center gap-2.5 rounded-xl p-1 transition-all shrink-0"
           >
-            {/* HU Avatar Badge */}
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-cyan-500/40 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 text-cyan-400 font-bold text-xs shadow-[0_0_12px_rgba(6,182,212,0.2)] transition-all group-hover:scale-105 group-hover:border-cyan-400">
-              HU
+            {/* Profile Picture */}
+            <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full border border-cyan-500/40 shadow-[0_0_12px_rgba(6,182,212,0.2)] transition-all group-hover:scale-105 group-hover:border-cyan-400 group-hover:shadow-[0_0_18px_rgba(6,182,212,0.35)]">
+              <Image
+                src="/images/profile/profile.png"
+                alt="Hasib Ullah - AI & Data Science Developer"
+                fill
+                sizes="36px"
+                className="object-cover object-top"
+                priority
+              />
             </div>
 
             <div className="flex flex-col gap-0.5 min-w-0">
