@@ -24,34 +24,39 @@ export function AboutSection() {
         />
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
-            <p className="text-sm font-medium uppercase tracking-[0.24em] text-slate-400">
+          <div className="rounded-2xl p-4" style={{ border: '1px solid var(--surface-border)', background: 'var(--surface-bg)' }}>
+            <p className="text-sm font-medium uppercase tracking-[0.24em]" style={{ color: 'var(--muted-text-color)' }}>
               Academic background
             </p>
-            <p className="mt-3 text-sm leading-7 text-slate-300">
+            <p className="mt-3 text-sm leading-7" style={{ color: 'var(--body-text-color)' }}>
               BS Computer Science at Hazara University, Mansehra.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
-            <p className="text-sm font-medium uppercase tracking-[0.24em] text-slate-400">
+          <div className="rounded-2xl p-4" style={{ border: '1px solid var(--surface-border)', background: 'var(--surface-bg)' }}>
+            <p className="text-sm font-medium uppercase tracking-[0.24em]" style={{ color: 'var(--muted-text-color)' }}>
               Career direction
             </p>
-            <p className="mt-3 text-sm leading-7 text-slate-300">
+            <p className="mt-3 text-sm leading-7" style={{ color: 'var(--body-text-color)' }}>
               Building practical intelligent systems for internships, jobs, research, and future academic growth.
             </p>
           </div>
         </div>
 
         <div className="mt-6">
-          <p className="text-sm font-medium uppercase tracking-[0.24em] text-slate-400">
+          <p className="text-sm font-medium uppercase tracking-[0.24em]" style={{ color: 'var(--muted-text-color)' }}>
             Research interests
           </p>
           <ul className="mt-3 flex flex-wrap gap-3">
             {profile.researchInterests.map((interest) => (
               <li
                 key={interest}
-                className="rounded-full border border-slate-700/80 bg-slate-900/70 px-3 py-1 text-sm text-slate-200"
+                className="rounded-full border px-3 py-1 text-sm"
+                style={{
+                  borderColor: 'var(--surface-border)',
+                  background: 'var(--surface-bg)',
+                  color: 'var(--body-text-color)',
+                }}
               >
                 {interest}
               </li>

@@ -23,7 +23,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
         </div>
       ) : (
         <div className="flex aspect-[16/10] shrink-0 items-center justify-center bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900">
@@ -34,42 +34,70 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <div className="flex flex-1 flex-col justify-between space-y-4 p-6">
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em]">
-            <span className="rounded-full border border-slate-700/80 bg-slate-900/80 px-3 py-1 text-slate-300 backdrop-blur-md">
+            <span
+              className="rounded-full border px-3 py-1 backdrop-blur-md"
+              style={{
+                borderColor: 'var(--surface-border)',
+                background: 'var(--surface-bg)',
+                color: 'var(--body-text-color)',
+              }}
+            >
               {project.category}
             </span>
             <span
               className={cn(
                 'rounded-full border px-3 py-1 backdrop-blur-md',
                 project.status === 'Completed'
-                  ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.15)]'
-                  : 'border-amber-500/40 bg-amber-500/10 text-amber-300 shadow-[0_0_10px_rgba(245,158,11,0.15)]',
+                  ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.15)]'
+                  : 'border-amber-500/40 bg-amber-500/10 text-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.15)]',
               )}
             >
               {project.status}
             </span>
             {project.featured ? (
-              <span className="rounded-full border border-cyan-500/40 bg-cyan-500/10 px-3 py-1 text-cyan-300 shadow-[0_0_10px_rgba(6,182,212,0.2)]">
+              <span className="rounded-full border border-cyan-500/40 bg-cyan-500/10 px-3 py-1 text-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.2)]">
                 Featured
               </span>
             ) : null}
           </div>
 
           <div>
-            <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">{project.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-slate-300">{project.shortDescription}</p>
+            <h3
+              className="text-xl font-bold transition-colors group-hover:text-cyan-400"
+              style={{ color: 'var(--heading-color)' }}
+            >
+              {project.title}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed" style={{ color: 'var(--body-text-color)' }}>
+              {project.shortDescription}
+            </p>
           </div>
 
           <div className="flex flex-wrap gap-1.5">
             {project.technologies.slice(0, 4).map((technology) => (
-              <span key={technology} className="rounded-full border border-slate-800/90 bg-slate-950/80 px-3 py-1 text-xs text-slate-300 font-medium">
+              <span
+                key={technology}
+                className="rounded-full border px-3 py-1 text-xs font-medium"
+                style={{
+                  borderColor: 'var(--surface-border)',
+                  background: 'var(--body-bg)',
+                  color: 'var(--body-text-color)',
+                }}
+              >
                 {technology}
               </span>
             ))}
           </div>
         </div>
 
-        <div className="mt-auto flex flex-wrap items-center justify-between gap-2.5 border-t border-slate-800/80 pt-4">
-          <Link href={`/projects/${project.slug}`} className="portfolio-btn portfolio-btn-secondary gap-1.5 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider">
+        <div
+          className="mt-auto flex flex-wrap items-center justify-between gap-2.5 border-t pt-4"
+          style={{ borderColor: 'var(--surface-border)' }}
+        >
+          <Link
+            href={`/projects/${project.slug}`}
+            className="portfolio-btn portfolio-btn-secondary gap-1.5 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider"
+          >
             <span>Case Study</span>
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>

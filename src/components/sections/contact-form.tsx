@@ -36,43 +36,49 @@ export function ContactForm() {
       {/* Left Info Column */}
       <div className="flex flex-col justify-between gap-6 lg:col-span-5">
         <div className="space-y-4">
-          <div className="flex items-start gap-4 rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
-            <div className="rounded-xl border border-slate-700/80 bg-slate-950 p-3 text-cyan-400">
+          <div className="flex items-start gap-4 rounded-2xl p-5"
+            style={{ border: '1px solid var(--surface-border)', background: 'var(--surface-bg)' }}>
+            <div className="rounded-xl p-3 text-cyan-400"
+              style={{ border: '1px solid var(--surface-border)', background: 'var(--body-bg)' }}>
               <Mail className="h-5 w-5" />
             </div>
             <div>
-              <h3 className="text-xs uppercase tracking-[0.2em] text-slate-400">Direct Email</h3>
-              <p className="mt-1 text-sm font-medium text-white break-all">{profile.email}</p>
+              <h3 className="text-xs uppercase tracking-[0.2em]" style={{ color: 'var(--muted-text-color)' }}>Direct Email</h3>
+              <p className="mt-1 text-sm font-medium break-all" style={{ color: 'var(--heading-color)' }}>{profile.email}</p>
             </div>
           </div>
 
-          <div className="flex items-start gap-4 rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
-            <div className="rounded-xl border border-slate-700/80 bg-slate-950 p-3 text-cyan-400">
+          <div className="flex items-start gap-4 rounded-2xl p-5"
+            style={{ border: '1px solid var(--surface-border)', background: 'var(--surface-bg)' }}>
+            <div className="rounded-xl p-3 text-cyan-400"
+              style={{ border: '1px solid var(--surface-border)', background: 'var(--body-bg)' }}>
               <MapPin className="h-5 w-5" />
             </div>
             <div>
-              <h3 className="text-xs uppercase tracking-[0.2em] text-slate-400">Location</h3>
-              <p className="mt-1 text-sm font-medium text-white">{profile.location}</p>
+              <h3 className="text-xs uppercase tracking-[0.2em]" style={{ color: 'var(--muted-text-color)' }}>Location</h3>
+              <p className="mt-1 text-sm font-medium" style={{ color: 'var(--heading-color)' }}>{profile.location}</p>
             </div>
           </div>
 
-          <div className="flex items-start gap-4 rounded-2xl border border-slate-800 bg-slate-900/70 p-5">
-            <div className="rounded-xl border border-slate-700/80 bg-slate-950 p-3 text-cyan-400">
+          <div className="flex items-start gap-4 rounded-2xl p-5"
+            style={{ border: '1px solid var(--surface-border)', background: 'var(--surface-bg)' }}>
+            <div className="rounded-xl p-3 text-cyan-400"
+              style={{ border: '1px solid var(--surface-border)', background: 'var(--body-bg)' }}>
               <Globe className="h-5 w-5" />
             </div>
             <div>
-              <h3 className="text-xs uppercase tracking-[0.2em] text-slate-400">Availability</h3>
-              <p className="mt-1 text-sm font-medium text-white">{profile.availability}</p>
+              <h3 className="text-xs uppercase tracking-[0.2em]" style={{ color: 'var(--muted-text-color)' }}>Availability</h3>
+              <p className="mt-1 text-sm font-medium" style={{ color: 'var(--heading-color)' }}>{profile.availability}</p>
             </div>
           </div>
         </div>
 
-        <div className="rounded-2xl border border-slate-800 bg-slate-950/60 p-6">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+        <div className="rounded-2xl p-6" style={{ border: '1px solid var(--surface-border)', background: 'var(--body-bg)' }}>
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: 'var(--muted-text-color)' }}>
             <FileText className="h-4 w-4 text-cyan-400" />
             <span>Resume & CV</span>
           </div>
-          <p className="mt-2 text-xs text-slate-400">
+          <p className="mt-2 text-xs" style={{ color: 'var(--muted-text-color)' }}>
             Download the official verified resume for qualifications and technical experience summary.
           </p>
           <a
@@ -88,14 +94,14 @@ export function ContactForm() {
 
       {/* Right Form Column */}
       <div className="lg:col-span-7">
-        <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6 sm:p-8">
+        <div className="rounded-3xl p-6 sm:p-8" style={{ border: '1px solid var(--surface-border)', background: 'var(--surface-bg)' }}>
           {submitted ? (
             <div className="flex flex-col items-center justify-center py-12 text-center">
               <div className="rounded-full border border-emerald-500/30 bg-emerald-500/10 p-4 text-emerald-400">
                 <CheckCircle2 className="h-10 w-10" />
               </div>
-              <h3 className="mt-4 text-xl font-bold text-white">Message Ready</h3>
-              <p className="mt-2 text-sm text-slate-300 max-w-md">
+              <h3 className="mt-4 text-xl font-bold" style={{ color: 'var(--heading-color)' }}>Message Ready</h3>
+              <p className="mt-2 text-sm max-w-md" style={{ color: 'var(--body-text-color)' }}>
                 Your message has been formatted. Click below to launch your email app and send it directly.
               </p>
               <div className="mt-6 flex flex-wrap gap-3 justify-center">
@@ -119,7 +125,7 @@ export function ContactForm() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="contact-name" className="block text-xs font-semibold uppercase tracking-[0.15em] text-slate-300 mb-1.5">
+                  <label htmlFor="contact-name" className="block text-xs font-semibold uppercase tracking-[0.15em] mb-1.5" style={{ color: 'var(--body-text-color)' }}>
                     Your Name
                   </label>
                   <input
@@ -129,12 +135,12 @@ export function ContactForm() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Enter your name"
-                    className="w-full rounded-xl border border-slate-800 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
+                    className="portfolio-input"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="contact-email" className="block text-xs font-semibold uppercase tracking-[0.15em] text-slate-300 mb-1.5">
+                  <label htmlFor="contact-email" className="block text-xs font-semibold uppercase tracking-[0.15em] mb-1.5" style={{ color: 'var(--body-text-color)' }}>
                     Your Email
                   </label>
                   <input
@@ -144,13 +150,13 @@ export function ContactForm() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="name@example.com"
-                    className="w-full rounded-xl border border-slate-800 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
+                    className="portfolio-input"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="contact-subject" className="block text-xs font-semibold uppercase tracking-[0.15em] text-slate-300 mb-1.5">
+                <label htmlFor="contact-subject" className="block text-xs font-semibold uppercase tracking-[0.15em] mb-1.5" style={{ color: 'var(--body-text-color)' }}>
                   Subject
                 </label>
                 <input
@@ -160,12 +166,12 @@ export function ContactForm() {
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   placeholder="Project inquiry, research collaboration, etc."
-                  className="w-full rounded-xl border border-slate-800 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
+                  className="portfolio-input"
                 />
               </div>
 
               <div>
-                <label htmlFor="contact-message" className="block text-xs font-semibold uppercase tracking-[0.15em] text-slate-300 mb-1.5">
+                <label htmlFor="contact-message" className="block text-xs font-semibold uppercase tracking-[0.15em] mb-1.5" style={{ color: 'var(--body-text-color)' }}>
                   Message
                 </label>
                 <textarea
@@ -175,7 +181,7 @@ export function ContactForm() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Write your message here..."
-                  className="w-full resize-none rounded-xl border border-slate-800 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
+                  className="portfolio-input resize-none"
                 />
               </div>
 

@@ -13,7 +13,11 @@ export function SectionHeading({ eyebrow, title, description }: SectionHeadingPr
         </span>
       ) : null}
       <h2 className="section-title mt-3 text-2xl font-bold sm:text-3xl lg:text-4xl">{title}</h2>
-      {description ? <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-300 font-normal">{description}</p> : null}
+      {description ? (
+        <p className="mt-3 text-sm sm:text-base leading-relaxed font-normal" style={{ color: 'var(--body-text-color)' }}>
+          {description}
+        </p>
+      ) : null}
     </div>
   );
 }

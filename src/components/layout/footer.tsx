@@ -1,23 +1,41 @@
+'use client';
+
 import Link from 'next/link';
 import { ArrowUp, Mail, FileText } from 'lucide-react';
 import { navigationLinks, socialNavigationLinks } from '@/data/navigation';
 import { profile } from '@/data/profile';
 
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 export function Footer() {
   return (
-    <footer className="relative mt-24 border-t border-slate-800/80 bg-slate-950/90 text-slate-400 backdrop-blur-2xl">
+    <footer
+      className="relative mt-24 border-t backdrop-blur-2xl"
+      style={{
+        backgroundColor: 'var(--footer-bg)',
+        borderColor: 'var(--footer-border)',
+        color: 'var(--muted-text-color)',
+      }}
+    >
       <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[1px] w-3/4 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
       <div className="portfolio-shell py-14">
         <div className="grid gap-10 lg:grid-cols-12">
           {/* Brand Info */}
           <div className="space-y-4 lg:col-span-5">
             <Link href="/" className="inline-block group">
-              <span className="text-base font-bold uppercase tracking-[0.25em] text-white group-hover:text-cyan-400 transition-colors">
+              <span
+                className="text-base font-bold uppercase tracking-[0.25em] transition-colors group-hover:text-cyan-400"
+                style={{ color: 'var(--heading-color)' }}
+              >
                 {profile.name}
               </span>
-              <p className="mt-1 text-xs text-slate-400 group-hover:text-slate-300 transition-colors">{profile.headline}</p>
+              <p className="mt-1 text-xs transition-colors group-hover:text-cyan-400" style={{ color: 'var(--muted-text-color)' }}>
+                {profile.headline}
+              </p>
             </Link>
-            <p className="text-xs leading-relaxed text-slate-400 max-w-sm">
+            <p className="text-xs leading-relaxed max-w-sm" style={{ color: 'var(--muted-text-color)' }}>
               {profile.shortBio}
             </p>
             <div className="flex items-center gap-3 pt-2">
@@ -29,7 +47,7 @@ export function Footer() {
                     href={link.href}
                     target={isMailto ? undefined : '_blank'}
                     rel={isMailto ? undefined : 'noreferrer'}
-                    className="portfolio-btn portfolio-btn-secondary rounded-full p-2.5 hover:text-cyan-300 hover:border-cyan-500/50"
+                    className="portfolio-btn portfolio-btn-secondary rounded-full p-2.5 hover:text-cyan-400"
                     aria-label={link.label}
                   >
                     {link.label === 'GitHub' ? (
@@ -50,7 +68,7 @@ export function Footer() {
                 href={profile.resume}
                 target="_blank"
                 rel="noreferrer"
-                className="portfolio-btn portfolio-btn-secondary gap-1.5 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider hover:text-cyan-300"
+                className="portfolio-btn portfolio-btn-secondary gap-1.5 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider hover:text-cyan-400"
               >
                 <FileText className="h-3.5 w-3.5 text-cyan-400" />
                 Resume
@@ -60,13 +78,16 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-3 lg:col-span-4">
-            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-200">Navigation</h3>
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em]" style={{ color: 'var(--heading-color)' }}>
+              Navigation
+            </h3>
             <div className="grid grid-cols-2 gap-2 text-xs font-medium">
               {navigationLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="portfolio-focus text-slate-400 transition-colors duration-200 hover:text-cyan-300 py-1"
+                  className="portfolio-focus transition-colors duration-200 hover:text-cyan-400 py-1"
+                  style={{ color: 'var(--muted-text-color)' }}
                 >
                   {link.label}
                 </Link>
@@ -76,12 +97,16 @@ export function Footer() {
 
           {/* Availability & Location */}
           <div className="space-y-3 lg:col-span-3">
-            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-200">Status & Location</h3>
-            <p className="text-xs leading-5 text-slate-300 font-medium">{profile.location}</p>
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-medium text-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.15)]">
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em]" style={{ color: 'var(--heading-color)' }}>
+              Status & Location
+            </h3>
+            <p className="text-xs leading-5 font-medium" style={{ color: 'var(--body-text-color)' }}>
+              {profile.location}
+            </p>
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-medium text-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.15)]">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
               {profile.availability}
             </div>
@@ -89,18 +114,19 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-slate-800/80 pt-6 text-xs text-slate-400 font-medium">
-          <p>© {new Date().getFullYear()} {profile.name}. Designed & Built with Precision.</p>
-          <a
-            href="#"
-            className="portfolio-btn portfolio-btn-secondary gap-1.5 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-300 hover:text-white hover:border-cyan-400/50"
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t pt-6 text-xs font-medium"
+          style={{ borderColor: 'var(--surface-border)', color: 'var(--muted-text-color)' }}>
+          <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className="portfolio-btn portfolio-btn-secondary gap-1.5 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider hover:text-cyan-400"
           >
             <span>Back to top</span>
             <ArrowUp className="h-3.5 w-3.5 text-cyan-400" />
-          </a>
+          </button>
         </div>
       </div>
     </footer>
   );
 }
-

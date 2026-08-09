@@ -12,73 +12,99 @@ import { CertificationsSection } from '@/components/certifications/certification
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen px-6 py-16 text-white sm:px-8 lg:px-10">
+    <main className="min-h-screen px-4 py-12 sm:px-6 sm:py-16 lg:px-10">
       <div className="portfolio-shell flex flex-col gap-8">
         <HeroSection />
 
-        <AboutSection />
+        <div className="animate-on-scroll">
+          <AboutSection />
+        </div>
 
-        <Surface>
-          <SectionHeading
-            eyebrow="Skills"
-            title="Core technical capabilities"
-            description="Specialized technical skills across Artificial Intelligence, Data Science, Computer Vision, and Software Development."
-          />
-        </Surface>
+        <div className="animate-on-scroll">
+          <Surface>
+            <SectionHeading
+              eyebrow="Skills"
+              title="Core technical capabilities"
+              description="Specialized technical skills across Artificial Intelligence, Data Science, Computer Vision, and Software Development."
+            />
+          </Surface>
+        </div>
 
-        <SkillsSection />
+        <div className="animate-on-scroll">
+          <SkillsSection />
+        </div>
 
-        <Surface>
-          <SectionHeading
-            eyebrow="Projects"
-            title="Featured work and case studies"
-            description="Selected intelligent systems, software applications, and interactive project case studies."
-          />
-        </Surface>
+        <div className="animate-on-scroll">
+          <Surface>
+            <SectionHeading
+              eyebrow="Projects"
+              title="Featured work and case studies"
+              description="Selected intelligent systems, software applications, and interactive project case studies."
+            />
+          </Surface>
+        </div>
 
-        <FeaturedProjectsSection />
+        <div className="animate-on-scroll">
+          <FeaturedProjectsSection />
+        </div>
 
-        <Surface>
-          <SectionHeading
-            eyebrow="Experience"
-            title="Current professional timeline"
-            description="Professional experience, internship history, and engineering roles."
-          />
-        </Surface>
+        <div className="animate-on-scroll">
+          <Surface>
+            <SectionHeading
+              eyebrow="Experience"
+              title="Current professional timeline"
+              description="Professional experience, internship history, and engineering roles."
+            />
+          </Surface>
+        </div>
 
-        <ExperienceTimeline />
+        <div className="animate-on-scroll">
+          <ExperienceTimeline />
+        </div>
 
-        <Surface>
-          <SectionHeading
-            eyebrow="Education"
-            title="Academic progression"
-            description="Academic foundation and degree studies in Computer Science."
-          />
-        </Surface>
+        <div className="animate-on-scroll">
+          <Surface>
+            <SectionHeading
+              eyebrow="Education"
+              title="Academic progression"
+              description="Academic foundation and degree studies in Computer Science."
+            />
+          </Surface>
+        </div>
 
-        <EducationTimeline />
+        <div className="animate-on-scroll">
+          <EducationTimeline />
+        </div>
 
-        <Surface>
-          <SectionHeading
-            eyebrow="Research"
-            title="Current research interests"
-            description="Primary research directions in Artificial Intelligence, Machine Learning, and Computer Vision."
-          />
-        </Surface>
+        <div className="animate-on-scroll">
+          <Surface>
+            <SectionHeading
+              eyebrow="Research"
+              title="Current research interests"
+              description="Primary research directions in Artificial Intelligence, Machine Learning, and Computer Vision."
+            />
+          </Surface>
+        </div>
 
-        <ResearchSection />
+        <div className="animate-on-scroll">
+          <ResearchSection />
+        </div>
 
-        <Surface>
-          <SectionHeading
-            eyebrow="Certifications"
-            title="Verified certificates and training"
-            description="Professional certifications, credentials, and technical training programs."
-          />
-        </Surface>
+        <div className="animate-on-scroll">
+          <Surface>
+            <SectionHeading
+              eyebrow="Certifications"
+              title="Verified certificates and training"
+              description="Professional certifications, credentials, and technical training programs."
+            />
+          </Surface>
+        </div>
 
-        <CertificationsSection />
+        <div className="animate-on-scroll">
+          <CertificationsSection />
+        </div>
 
-        <section id="primary-areas" className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+        <section id="primary-areas" className="animate-on-scroll grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
           <Surface className="portfolio-surface-soft">
             <SectionHeading
               eyebrow="Primary Areas"
@@ -89,7 +115,12 @@ export default function HomePage() {
               {profile.primaryAreas.map((area) => (
                 <li
                   key={area}
-                  className="rounded-full border border-slate-700/80 bg-slate-900/70 px-3 py-1 text-sm text-slate-200"
+                  className="rounded-full border px-3 py-1 text-sm"
+                  style={{
+                    borderColor: 'var(--surface-border)',
+                    background: 'var(--surface-bg)',
+                    color: 'var(--body-text-color)',
+                  }}
                 >
                   {area}
                 </li>

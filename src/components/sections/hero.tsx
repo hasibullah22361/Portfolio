@@ -26,43 +26,70 @@ function SocialIcon({ label }: { label: string }) {
 
 export function HeroSection() {
   return (
-    <Surface className="relative overflow-hidden border-slate-800/80 bg-slate-900/40 backdrop-blur-2xl">
-      <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-cyan-500/15 blur-3xl" />
-      <div className="absolute -left-20 -bottom-20 h-72 w-72 rounded-full bg-indigo-500/15 blur-3xl" />
+    <Surface className="relative overflow-hidden" id="hero">
+      {/* Subtle background accents */}
+      <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl motion-reduce:hidden" />
+      <div className="absolute -left-20 -bottom-20 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl motion-reduce:hidden" />
 
       <div className="relative grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+        {/* ─── Content ─── */}
         <div>
-          <h1 className="max-w-3xl text-4xl font-extrabold tracking-tight sm:text-6xl text-white">
-            <span className="text-white">Hasib </span>
+          {/* Eyebrow */}
+          <div className="anim-fade-in-up">
+            <span
+              className="inline-flex items-center rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.15)]"
+            >
+              Computer Science · AI · Data Science
+            </span>
+          </div>
+
+          {/* Name */}
+          <h1 className="mt-5 max-w-3xl text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl anim-fade-in-up-d1">
+            <span>Hasib </span>
             <span className="magic-name">Ullah</span>
           </h1>
-          <p className="mt-3 max-w-2xl text-xl text-cyan-300/90 font-medium tracking-wide">{profile.headline}</p>
-          <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-300 min-h-[3.5rem] font-normal">
+
+          {/* Title */}
+          <p className="mt-3 max-w-2xl text-lg sm:text-xl text-cyan-400 font-medium tracking-wide anim-fade-in-up-d2">
+            {profile.headline}
+          </p>
+
+          {/* Bio */}
+          <p className="mt-5 max-w-3xl text-base leading-relaxed min-h-[3.5rem] font-normal anim-fade-in-up-d3"
+            style={{ color: 'var(--body-text-color)' }}>
             <TypewriterText text={profile.shortBio} />
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-2.5 text-xs font-medium text-slate-300">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-700/70 bg-slate-900/80 px-3.5 py-1.5 backdrop-blur-md shadow-sm">
+          {/* Location & Availability badges */}
+          <div className="mt-5 flex flex-wrap gap-2.5 text-xs font-medium anim-fade-in-up-d3">
+            <span className="inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 backdrop-blur-md shadow-sm"
+              style={{ borderColor: 'var(--surface-border)', background: 'var(--surface-bg)' }}>
               <MapPin className="h-3.5 w-3.5 text-cyan-400" />
-              {profile.location}
+              <span style={{ color: 'var(--body-text-color)' }}>{profile.location}</span>
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-emerald-300 backdrop-blur-md shadow-[0_0_12px_rgba(16,185,129,0.15)]">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-emerald-400 backdrop-blur-md shadow-[0_0_12px_rgba(16,185,129,0.15)]">
               <Briefcase className="h-3.5 w-3.5 text-emerald-400" />
               {profile.availability}
             </span>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button href="#primary-areas" variant="primary">
-              View My Work
+          {/* CTA Buttons */}
+          <div className="mt-8 flex flex-wrap gap-3 anim-fade-in-up-d4">
+            <Button href="/projects" variant="primary">
+              View My Projects
             </Button>
-            <Button href={profile.resume} variant="secondary">
+            <Button href={profile.resume} variant="secondary" target="_blank" rel="noreferrer">
               <Download className="mr-2 h-4 w-4 text-cyan-400" aria-hidden="true" />
-              Download Resume
+              Download CV
+            </Button>
+            <Button href="/contact" variant="secondary">
+              <Mail className="mr-2 h-4 w-4 text-cyan-400" aria-hidden="true" />
+              Contact Me
             </Button>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          {/* Social Links */}
+          <div className="mt-6 flex flex-wrap gap-3 anim-fade-in-up-d5">
             {profile.socialLinks.map((link) => {
               const isMailto = link.href.startsWith('mailto:');
 
@@ -73,7 +100,7 @@ export function HeroSection() {
                   target={isMailto ? undefined : '_blank'}
                   rel={isMailto ? undefined : 'noreferrer'}
                   aria-label={link.ariaLabel}
-                  className="portfolio-btn portfolio-btn-secondary gap-2 rounded-full px-4 py-2 text-sm font-medium border-slate-700/80 hover:border-cyan-400/60 hover:text-cyan-300"
+                  className="portfolio-btn portfolio-btn-secondary gap-2 rounded-full px-4 py-2 text-sm font-medium hover:text-cyan-400 transition-colors"
                 >
                   <SocialIcon label={link.label} />
                   {link.label}
@@ -83,10 +110,12 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="mx-auto w-full max-w-sm lg:ml-auto lg:max-w-none">
+        {/* ─── Profile Image ─── */}
+        <div className="mx-auto w-full max-w-sm lg:ml-auto lg:max-w-none anim-slide-in-right">
           <div className="relative group">
-            <div className="absolute -inset-1 rounded-[2.5rem] bg-gradient-to-r from-cyan-500 to-indigo-600 opacity-30 blur-xl transition duration-500 group-hover:opacity-70" />
-            <div className="relative rounded-[2rem] border border-slate-700/60 bg-slate-950/80 p-4 shadow-2xl backdrop-blur-xl">
+            <div className="absolute -inset-1 rounded-[2.5rem] bg-gradient-to-r from-cyan-500 to-indigo-600 opacity-25 blur-xl transition duration-500 group-hover:opacity-50 motion-reduce:transition-none" />
+            <div className="relative rounded-[2rem] border p-4 shadow-2xl backdrop-blur-xl"
+              style={{ borderColor: 'var(--surface-border)', background: 'var(--surface-bg)' }}>
               <ProfileImage
                 src={profile.profileImage}
                 alt={`${profile.name} professional profile photo`}
