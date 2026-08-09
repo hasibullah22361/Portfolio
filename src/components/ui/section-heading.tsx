@@ -8,12 +8,12 @@ export function SectionHeading({ eyebrow, title, description }: SectionHeadingPr
   return (
     <div className="max-w-3xl">
       {eyebrow ? (
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent">
+        <span className="inline-flex items-center rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.15)]">
           {eyebrow}
-        </p>
+        </span>
       ) : null}
-      <h2 className="section-title mt-3 text-2xl font-semibold sm:text-3xl">{title}</h2>
-      {description ? <p className="mt-3 text-sm leading-7 text-slate-400">{description}</p> : null}
+      <h2 className="section-title mt-3 text-2xl font-bold sm:text-3xl lg:text-4xl">{title}</h2>
+      {description ? <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-300 font-normal">{description}</p> : null}
     </div>
   );
 }

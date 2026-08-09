@@ -6,7 +6,7 @@
   color-scheme: dark;
   --background: 2 6 23;
   --surface: 15 23 42;
-  --surface-elevated: 15 23 42;
+  --surface-elevated: 30 41 59;
   --border: 51 65 85;
   --text: 248 250 252;
   --muted: 148 163 184;
@@ -25,9 +25,13 @@ body {
 
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at top, rgba(59, 130, 246, 0.14), transparent 34%),
-    linear-gradient(180deg, rgb(var(--background)) 0%, rgb(15 23 42) 100%);
+  background-color: #030712;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.15), transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(147, 51, 234, 0.12), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(6, 182, 212, 0.1), transparent 50%),
+    linear-gradient(180deg, #030712 0%, #0f172a 100%);
+  background-attachment: fixed;
   color: rgb(var(--text));
   font-family: var(--font-inter), Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     sans-serif;
@@ -40,8 +44,24 @@ body {
 }
 
 ::selection {
-  background: rgba(59, 130, 246, 0.28);
-  color: rgb(var(--text));
+  background: rgba(6, 182, 212, 0.3);
+  color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #030712;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 5px;
+  border: 2px solid #030712;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
 }
 
 a {
@@ -75,11 +95,19 @@ a {
   }
 
   .portfolio-surface {
-    @apply border border-slate-800/80 bg-slate-900/60 shadow-[0_24px_80px_-24px_rgba(15,23,42,0.9)];
+    @apply border border-slate-800/80 bg-slate-900/60 backdrop-blur-xl shadow-[0_24px_80px_-24px_rgba(15,23,42,0.9)] transition-all duration-300 hover:border-slate-700/80;
   }
 
   .portfolio-surface-soft {
-    @apply border border-slate-800/60 bg-slate-900/40;
+    @apply border border-slate-800/60 bg-slate-900/40 backdrop-blur-md transition-all duration-300 hover:border-slate-700/70;
+  }
+
+  .glass-card {
+    @apply border border-slate-800/70 bg-slate-900/40 backdrop-blur-xl transition-all duration-300 hover:border-cyan-500/40 hover:bg-slate-900/60 hover:shadow-[0_12px_40px_-10px_rgba(6,182,212,0.15)];
+  }
+
+  .glass-card-interactive {
+    @apply border border-slate-800/70 bg-slate-900/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/50 hover:bg-slate-900/70 hover:shadow-[0_20px_50px_-12px_rgba(6,182,212,0.2)];
   }
 
   .portfolio-focus {
@@ -90,26 +118,26 @@ a {
   .portfolio-btn {
     @apply relative inline-flex items-center justify-center font-medium
            transition-all duration-300 ease-out
-           hover:-translate-y-0.5 hover:scale-[1.025]
-           active:translate-y-0 active:scale-[0.975]
+           hover:-translate-y-0.5 hover:scale-[1.02]
+           active:translate-y-0 active:scale-[0.98]
            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950
            motion-reduce:transition-none motion-reduce:hover:transform-none motion-reduce:active:transform-none
            [&_svg]:transition-transform [&_svg]:duration-300 [&_svg]:ease-out hover:[&_svg]:translate-x-0.5 motion-reduce:hover:[&_svg]:transform-none;
   }
 
   .portfolio-btn-primary {
-    @apply bg-accent text-white shadow-glow
-           hover:bg-accent-strong hover:shadow-[0_12px_35px_-5px_rgba(59,130,246,0.5)];
+    @apply bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-cyan-950/50
+           hover:from-blue-500 hover:to-cyan-500 hover:shadow-[0_12px_35px_-5px_rgba(6,182,212,0.4)];
   }
 
   .portfolio-btn-secondary {
-    @apply border border-slate-700 bg-slate-900/60 text-slate-200
+    @apply border border-slate-700/80 bg-slate-900/70 text-slate-200 backdrop-blur-md
            hover:border-slate-500 hover:bg-slate-800/90 hover:text-white hover:shadow-[0_8px_25px_-5px_rgba(15,23,42,0.8)];
   }
 
   .portfolio-btn-cyan {
-    @apply bg-cyan-600 text-white shadow-lg shadow-cyan-950/50
-           hover:bg-cyan-500 hover:shadow-cyan-900/60 hover:shadow-[0_10px_30px_-5px_rgba(6,182,212,0.4)];
+    @apply bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-950/60
+           hover:from-cyan-400 hover:to-blue-500 hover:shadow-[0_10px_30px_-5px_rgba(6,182,212,0.5)];
   }
 
   .portfolio-btn-ghost {
@@ -128,7 +156,7 @@ a {
 
   /* Section h2 title gradient */
   .section-title {
-    background: linear-gradient(135deg, #818cf8 0%, #a78bfa 40%, #38bdf8 100%);
+    background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -141,3 +169,13 @@ a {
   0%   { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.98); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+

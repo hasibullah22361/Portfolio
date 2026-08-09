@@ -13,35 +13,55 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const coverImage = project.images?.[0];
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/70 shadow-[0_24px_80px_-24px_rgba(15,23,42,0.9)] transition-all duration-200 hover:-translate-y-1 hover:border-slate-700">
+    <article className="glass-card-interactive group flex h-full flex-col overflow-hidden rounded-3xl p-0">
       {coverImage ? (
-        <div className="relative aspect-[16/10] shrink-0">
-          <Image src={coverImage.src} alt={coverImage.alt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+        <div className="relative aspect-[16/10] shrink-0 overflow-hidden">
+          <Image
+            src={coverImage.src}
+            alt={coverImage.alt}
+            fill
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60" />
         </div>
       ) : (
-        <div className="flex aspect-[16/10] shrink-0 items-center justify-center bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.2),transparent_35%),linear-gradient(180deg,rgba(15,23,42,1),rgba(2,6,23,1))]">
-          <span className="text-sm uppercase tracking-[0.3em] text-slate-500">No preview</span>
+        <div className="flex aspect-[16/10] shrink-0 items-center justify-center bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900">
+          <span className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">No preview</span>
         </div>
       )}
 
       <div className="flex flex-1 flex-col justify-between space-y-4 p-6">
         <div className="space-y-4">
-          <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.24em] text-slate-500">
-            <span className="rounded-full border border-slate-700 px-2.5 py-1 text-slate-300">{project.category}</span>
-            <span className={cn('rounded-full border px-2.5 py-1', project.status === 'Completed' ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-200' : 'border-amber-500/40 bg-amber-500/10 text-amber-200')}>
+          <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em]">
+            <span className="rounded-full border border-slate-700/80 bg-slate-900/80 px-3 py-1 text-slate-300 backdrop-blur-md">
+              {project.category}
+            </span>
+            <span
+              className={cn(
+                'rounded-full border px-3 py-1 backdrop-blur-md',
+                project.status === 'Completed'
+                  ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.15)]'
+                  : 'border-amber-500/40 bg-amber-500/10 text-amber-300 shadow-[0_0_10px_rgba(245,158,11,0.15)]',
+              )}
+            >
               {project.status}
             </span>
-            {project.featured ? <span className="rounded-full border border-blue-500/40 bg-blue-500/10 px-2.5 py-1 text-blue-200">Featured</span> : null}
+            {project.featured ? (
+              <span className="rounded-full border border-cyan-500/40 bg-cyan-500/10 px-3 py-1 text-cyan-300 shadow-[0_0_10px_rgba(6,182,212,0.2)]">
+                Featured
+              </span>
+            ) : null}
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-            <p className="mt-2 text-sm leading-7 text-slate-400">{project.shortDescription}</p>
+            <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">{project.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-300">{project.shortDescription}</p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5">
             {project.technologies.slice(0, 4).map((technology) => (
-              <span key={technology} className="rounded-full border border-slate-700 bg-slate-950/70 px-2.5 py-1 text-xs text-slate-300">
+              <span key={technology} className="rounded-full border border-slate-800/90 bg-slate-950/80 px-3 py-1 text-xs text-slate-300 font-medium">
                 {technology}
               </span>
             ))}
@@ -49,8 +69,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         <div className="mt-auto flex flex-wrap items-center justify-between gap-2.5 border-t border-slate-800/80 pt-4">
-          <Link href={`/projects/${project.slug}`} className="portfolio-btn portfolio-btn-secondary gap-1.5 rounded-full px-3.5 py-2 text-xs font-medium">
-            <span>View case study</span>
+          <Link href={`/projects/${project.slug}`} className="portfolio-btn portfolio-btn-secondary gap-1.5 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider">
+            <span>Case Study</span>
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
 
@@ -60,7 +80,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="portfolio-btn portfolio-btn-cyan gap-1.5 rounded-full px-3.5 py-2 text-xs font-medium"
+                className="portfolio-btn portfolio-btn-cyan gap-1.5 rounded-full px-3.5 py-2 text-xs font-semibold uppercase tracking-wider"
               >
                 <ExternalLink className="h-3.5 w-3.5" />
                 <span>Live Demo</span>
@@ -72,7 +92,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="portfolio-btn portfolio-btn-secondary gap-1.5 rounded-full px-3.5 py-2 text-xs font-medium"
+                className="portfolio-btn portfolio-btn-secondary gap-1.5 rounded-full px-3.5 py-2 text-xs font-semibold uppercase tracking-wider"
               >
                 <GithubIcon className="h-3.5 w-3.5" />
                 <span>GitHub</span>

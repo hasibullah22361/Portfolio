@@ -1,4 +1,4 @@
-import { Download, Mail } from 'lucide-react';
+import { Download, Mail, MapPin, Briefcase } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ProfileImage } from '@/components/ui/profile-image';
@@ -26,24 +26,28 @@ function SocialIcon({ label }: { label: string }) {
 
 export function HeroSection() {
   return (
-    <Surface className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.16),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(15,23,42,0.4),transparent_45%)]" />
+    <Surface className="relative overflow-hidden border-slate-800/80 bg-slate-900/40 backdrop-blur-2xl">
+      <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-cyan-500/15 blur-3xl" />
+      <div className="absolute -left-20 -bottom-20 h-72 w-72 rounded-full bg-indigo-500/15 blur-3xl" />
+
       <div className="relative grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
         <div>
-          <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-6xl text-white">
+          <h1 className="max-w-3xl text-4xl font-extrabold tracking-tight sm:text-6xl text-white">
             <span className="text-white">Hasib </span>
             <span className="magic-name">Ullah</span>
           </h1>
-          <p className="mt-3 max-w-2xl text-lg text-slate-300 font-medium">{profile.headline}</p>
-          <p className="mt-6 max-w-3xl text-base leading-7 text-slate-400 min-h-[3.5rem]">
+          <p className="mt-3 max-w-2xl text-xl text-cyan-300/90 font-medium tracking-wide">{profile.headline}</p>
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-300 min-h-[3.5rem] font-normal">
             <TypewriterText text={profile.shortBio} />
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-2 text-sm text-slate-300">
-            <span className="rounded-full border border-slate-700 bg-slate-900/60 px-3 py-1">
+          <div className="mt-6 flex flex-wrap gap-2.5 text-xs font-medium text-slate-300">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-700/70 bg-slate-900/80 px-3.5 py-1.5 backdrop-blur-md shadow-sm">
+              <MapPin className="h-3.5 w-3.5 text-cyan-400" />
               {profile.location}
             </span>
-            <span className="rounded-full border border-slate-700 bg-slate-900/60 px-3 py-1">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1.5 text-emerald-300 backdrop-blur-md shadow-[0_0_12px_rgba(16,185,129,0.15)]">
+              <Briefcase className="h-3.5 w-3.5 text-emerald-400" />
               {profile.availability}
             </span>
           </div>
@@ -53,7 +57,7 @@ export function HeroSection() {
               View My Work
             </Button>
             <Button href={profile.resume} variant="secondary">
-              <Download className="mr-2 h-4 w-4" aria-hidden="true" />
+              <Download className="mr-2 h-4 w-4 text-cyan-400" aria-hidden="true" />
               Download Resume
             </Button>
           </div>
@@ -69,7 +73,7 @@ export function HeroSection() {
                   target={isMailto ? undefined : '_blank'}
                   rel={isMailto ? undefined : 'noreferrer'}
                   aria-label={link.ariaLabel}
-                  className="portfolio-btn portfolio-btn-secondary gap-2 rounded-full px-4 py-2 text-sm font-medium"
+                  className="portfolio-btn portfolio-btn-secondary gap-2 rounded-full px-4 py-2 text-sm font-medium border-slate-700/80 hover:border-cyan-400/60 hover:text-cyan-300"
                 >
                   <SocialIcon label={link.label} />
                   {link.label}
@@ -80,13 +84,16 @@ export function HeroSection() {
         </div>
 
         <div className="mx-auto w-full max-w-sm lg:ml-auto lg:max-w-none">
-          <div className="rounded-[2rem] border border-slate-800/80 bg-slate-950/50 p-4 shadow-[0_24px_80px_-24px_rgba(59,130,246,0.35)]">
-            <ProfileImage
-              src={profile.profileImage}
-              alt={`${profile.name} professional profile photo`}
-              name={profile.name}
-              isAvailable={profile.profileImageAvailable}
-            />
+          <div className="relative group">
+            <div className="absolute -inset-1 rounded-[2.5rem] bg-gradient-to-r from-cyan-500 to-indigo-600 opacity-30 blur-xl transition duration-500 group-hover:opacity-70" />
+            <div className="relative rounded-[2rem] border border-slate-700/60 bg-slate-950/80 p-4 shadow-2xl backdrop-blur-xl">
+              <ProfileImage
+                src={profile.profileImage}
+                alt={`${profile.name} professional profile photo`}
+                name={profile.name}
+                isAvailable={profile.profileImageAvailable}
+              />
+            </div>
           </div>
         </div>
       </div>

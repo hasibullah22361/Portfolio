@@ -5,18 +5,19 @@ import { profile } from '@/data/profile';
 
 export function Footer() {
   return (
-    <footer className="mt-20 border-t border-slate-800/80 bg-slate-950/80 text-slate-400">
-      <div className="portfolio-shell py-12">
+    <footer className="relative mt-24 border-t border-slate-800/80 bg-slate-950/90 text-slate-400 backdrop-blur-2xl">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[1px] w-3/4 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+      <div className="portfolio-shell py-14">
         <div className="grid gap-10 lg:grid-cols-12">
           {/* Brand Info */}
           <div className="space-y-4 lg:col-span-5">
-            <Link href="/" className="inline-block">
-              <span className="text-base font-bold uppercase tracking-[0.3em] text-white">
+            <Link href="/" className="inline-block group">
+              <span className="text-base font-bold uppercase tracking-[0.25em] text-white group-hover:text-cyan-400 transition-colors">
                 {profile.name}
               </span>
-              <p className="mt-1 text-xs text-slate-400">{profile.headline}</p>
+              <p className="mt-1 text-xs text-slate-400 group-hover:text-slate-300 transition-colors">{profile.headline}</p>
             </Link>
-            <p className="text-xs leading-6 text-slate-400 max-w-sm">
+            <p className="text-xs leading-relaxed text-slate-400 max-w-sm">
               {profile.shortBio}
             </p>
             <div className="flex items-center gap-3 pt-2">
@@ -28,7 +29,7 @@ export function Footer() {
                     href={link.href}
                     target={isMailto ? undefined : '_blank'}
                     rel={isMailto ? undefined : 'noreferrer'}
-                    className="portfolio-btn portfolio-btn-secondary rounded-full p-2.5"
+                    className="portfolio-btn portfolio-btn-secondary rounded-full p-2.5 hover:text-cyan-300 hover:border-cyan-500/50"
                     aria-label={link.label}
                   >
                     {link.label === 'GitHub' ? (
@@ -49,9 +50,9 @@ export function Footer() {
                 href={profile.resume}
                 target="_blank"
                 rel="noreferrer"
-                className="portfolio-btn portfolio-btn-secondary gap-1.5 rounded-full px-3.5 py-2 text-xs"
+                className="portfolio-btn portfolio-btn-secondary gap-1.5 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider hover:text-cyan-300"
               >
-                <FileText className="h-3.5 w-3.5" />
+                <FileText className="h-3.5 w-3.5 text-cyan-400" />
                 Resume
               </a>
             </div>
@@ -59,13 +60,13 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-3 lg:col-span-4">
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-200">Navigation</h3>
-            <div className="grid grid-cols-2 gap-2 text-xs">
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-200">Navigation</h3>
+            <div className="grid grid-cols-2 gap-2 text-xs font-medium">
               {navigationLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="portfolio-focus text-slate-400 transition-colors duration-200 hover:text-cyan-400 py-1"
+                  className="portfolio-focus text-slate-400 transition-colors duration-200 hover:text-cyan-300 py-1"
                 >
                   {link.label}
                 </Link>
@@ -75,24 +76,31 @@ export function Footer() {
 
           {/* Availability & Location */}
           <div className="space-y-3 lg:col-span-3">
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-200">Location</h3>
-            <p className="text-xs leading-5 text-slate-400">{profile.location}</p>
-            <p className="text-[11px] text-slate-500 pt-1">{profile.availability}</p>
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-200">Status & Location</h3>
+            <p className="text-xs leading-5 text-slate-300 font-medium">{profile.location}</p>
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-medium text-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.15)]">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              {profile.availability}
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-slate-800/80 pt-6 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-slate-800/80 pt-6 text-xs text-slate-400 font-medium">
+          <p>© {new Date().getFullYear()} {profile.name}. Designed & Built with Precision.</p>
           <a
             href="#"
-            className="portfolio-btn portfolio-btn-secondary gap-1.5 rounded-full px-3.5 py-1.5 text-xs text-slate-300"
+            className="portfolio-btn portfolio-btn-secondary gap-1.5 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-300 hover:text-white hover:border-cyan-400/50"
           >
             <span>Back to top</span>
-            <ArrowUp className="h-3.5 w-3.5" />
+            <ArrowUp className="h-3.5 w-3.5 text-cyan-400" />
           </a>
         </div>
       </div>
     </footer>
   );
 }
+
